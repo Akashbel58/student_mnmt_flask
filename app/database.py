@@ -1,6 +1,5 @@
 
 #  set up MongoDB conection
-
 import pymongo
 from config import MONGO_URL,DB_NAME
 
