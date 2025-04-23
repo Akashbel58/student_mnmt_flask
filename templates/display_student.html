@@ -1,0 +1,19 @@
+<h2>All Students</h2>
+<button onclick="fetchStudents()">Load Students</button>
+<ul id="student-list"></ul>
+
+<script>
+function fetchStudents() {
+    fetch("/display_students")
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById("student-list");
+            list.innerHTML = "";
+            data.Student_Data.forEach(s => {
+                const item = document.createElement("li");
+                item.innerText = s.name + " - " + s.roll_no;
+                list.appendChild(item);
+            });
+        });
+}
+</script>

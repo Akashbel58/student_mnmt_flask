@@ -1,0 +1,18 @@
+<form onsubmit="getStudent(); return false;">
+    <h2>Get Student by ID</h2>
+    Student ID: <input id="sid"><br>
+    <button type="submit">Get Student</button>
+</form>
+
+<pre id="result"></pre>
+
+<script>
+function getStudent() {
+    const id = document.getElementById("sid").value;
+    fetch(`/get_student/${id}`)
+        .then(r => r.json())
+        .then(d => {
+            document.getElementById("result").innerText = JSON.stringify(d, null, 2);
+        });
+}
+</script>

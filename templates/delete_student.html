@@ -1,0 +1,18 @@
+<form onsubmit="deleteStudent(); return false;">
+    <h2>Delete Student</h2>
+    Student ID: <input id="sid"><br>
+    <button type="submit">Delete</button>
+</form>
+
+<pre id="status"></pre>
+
+<script>
+function deleteStudent() {
+    const id = document.getElementById("sid").value;
+    fetch(`/delete_student/${id}`, { method: "DELETE" })
+        .then(r => r.json())
+        .then(d => {
+            document.getElementById("status").innerText = JSON.stringify(d);
+        });
+}
+</script>
